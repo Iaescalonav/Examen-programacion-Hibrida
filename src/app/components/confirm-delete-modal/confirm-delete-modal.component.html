@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-title>Confirmar Eliminación</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding modal-contenido">
+  <div class="contenedor-alerta">
+    <div class="icono-peligro-circulo">
+      <ion-icon name="alert-circle-outline" color="danger"></ion-icon>
+    </div>
+
+    <h3 class="titulo-confirmacion">¿Eliminar publicación?</h3>
+
+    <p class="texto-mensaje">
+      ¿Está seguro que desea eliminar la publicación
+      <strong class="texto-resaltado">"{{ publicacionTitulo }}"</strong>?
+    </p>
+
+    <p class="texto-advertencia">
+      Esta acción no se puede deshacer y se eliminará permanentemente del almacenamiento local.
+    </p>
+
+    <div class="fila-botones">
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="medium"
+        class="boton-modal boton-cancelar"
+        (click)="cancelar()"
+      >
+        Cancelar
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        color="danger"
+        class="boton-modal boton-confirmar"
+        (click)="confirmar()"
+      >
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        Eliminar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

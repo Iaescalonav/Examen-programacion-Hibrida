@@ -1,0 +1,28 @@
+<ion-item lines="full" class="publicacion-item">
+  <!-- Fotografía del aviso mediante ion-thumbnail y ion-img -->
+  <ion-thumbnail slot="start" class="publicacion-thumbnail">
+    <ion-img
+      [src]="publicacion.foto"
+      [alt]="publicacion.titulo"
+      class="publicacion-foto"
+    ></ion-img>
+  </ion-thumbnail>
+
+  <!-- Información textual: Título en negrita y Fecha con Pipe -->
+  <ion-label class="publicacion-info ion-text-wrap">
+    <h2 class="publicacion-titulo">{{ publicacion.titulo }}</h2>
+    <p class="publicacion-fecha">{{ publicacion.fecha | formatoFecha }}</p>
+  </ion-label>
+
+  <!-- Botón de eliminación con evento click e icono de papelera -->
+  <ion-button
+    slot="end"
+    fill="clear"
+    color="primary"
+    class="boton-eliminar"
+    (click)="onEliminar()"
+    aria-label="Eliminar publicación"
+  >
+    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+  </ion-button>
+</ion-item>

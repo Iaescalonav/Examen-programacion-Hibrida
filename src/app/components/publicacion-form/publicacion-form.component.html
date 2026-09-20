@@ -1,0 +1,93 @@
+<form [formGroup]="formPublicacion" (ngSubmit)="onSubmit()" class="formulario-publicacion">
+  <!-- Campo: Título -->
+  <div class="campo-grupo">
+    <ion-label class="campo-etiqueta">Título</ion-label>
+    <ion-item lines="none" class="campo-input-contenedor" [class.campo-error]="tituloValido">
+      <ion-input
+        type="text"
+        formControlName="titulo"
+        placeholder="Ej: Mascota perdida"
+        clearInput="true"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Mensajes de validación para el Título mediante *ngIf -->
+    <div class="mensaje-error" *ngIf="tituloValido">
+      <ion-text color="danger" *ngIf="formPublicacion.get('titulo')?.hasError('required')">
+        <small>El título es obligatorio.</small>
+      </ion-text>
+      <ion-text color="danger" *ngIf="formPublicacion.get('titulo')?.hasError('minlength')">
+        <small>El título debe tener al menos 5 caracteres (actual: {{ formPublicacion.get('titulo')?.value?.length || 0 }}).</small>
+      </ion-text>
+    </div>
+  </div>
+
+  <!-- Sección: Fotografía (Botón de Cámara y Previsualización) -->
+  <div class="campo-grupo">
+    <div class="seccion-fotografia">
+      <div class="columna-boton-camara">
+        <ion-button
+          type="button"
+          color="dark"
+          class="boton-camara"
+          (click)="capturarFotografia()"
+        >
+          <ion-icon slot="start" name="camera-outline"></ion-icon>
+          FOTOGRAFÍA
+        </ion-button>
+      </div>
+
+      <!-- Previsualización de la fotografía con ion-img -->
+      <div class="columna-preview-foto">
+        <div class="contenedor-preview-foto" *ngIf="fotoPreview">
+          <ion-img [src]="fotoPreview" alt="Foto de la publicación" class="foto-preview-img"></ion-img>
+        </div>
+        <div class="contenedor-sin-foto" *ngIf="!fotoPreview">
+          <ion-icon name="image-outline" class="icono-placeholder"></ion-icon>
+          <span class="texto-placeholder">Sin fotografía</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje de validación para la Fotografía mediante *ngIf -->
+    <div class="mensaje-error" *ngIf="fotoValida">
+      <ion-text color="danger" *ngIf="formPublicacion.get('foto')?.hasError('required')">
+        <small>Debe capturar una fotografía para la publicación.</small>
+      </ion-text>
+    </div>
+  </div>
+
+  <!-- Campo: Descripción -->
+  <div class="campo-grupo">
+    <ion-label class="campo-etiqueta">Descripción</ion-label>
+    <ion-item lines="none" class="campo-input-contenedor" [class.campo-error]="descripcionValida">
+      <ion-textarea
+        formControlName="descripcion"
+        rows="4"
+        placeholder="Ej: Perrito salchicha perdido en esquina Manuel Montt..."
+        autoGrow="true"
+      ></ion-textarea>
+    </ion-item>
+
+    <!-- Mensajes de validación para la Descripción mediante *ngIf -->
+    <div class="mensaje-error" *ngIf="descripcionValida">
+      <ion-text color="danger" *ngIf="formPublicacion.get('descripcion')?.hasError('required')">
+        <small>La descripción es obligatoria.</small>
+      </ion-text>
+      <ion-text color="danger" *ngIf="formPublicacion.get('descripcion')?.hasError('minlength')">
+        <small>La descripción debe tener al menos 20 caracteres (actual: {{ formPublicacion.get('descripcion')?.value?.length || 0 }}).</small>
+      </ion-text>
+    </div>
+  </div>
+
+  <!-- Botón de acción: GUARDAR -->
+  <div class="accion-guardar">
+    <ion-button
+      type="submit"
+      color="primary"
+      class="boton-guardar"
+    >
+      GUARDAR
+    </ion-button>
+  </div>
+</form>

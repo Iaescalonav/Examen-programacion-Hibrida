@@ -1,0 +1,83 @@
+.cabecera-principal {
+  border-bottom: 1px solid #e0e0e0;
+
+  .toolbar-publicaciones {
+    --background: #ffffff;
+    --min-height: 56px;
+
+    .titulo-centrado {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #111111;
+      text-align: center;
+    }
+  }
+}
+
+.contenido-publicaciones {
+  --background: #ffffff;
+
+  .contenedor-cargando {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 16px;
+    color: #666666;
+
+    p {
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+  }
+
+  .contenedor-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    text-align: center;
+    color: #757575;
+
+    .icono-vacio {
+      font-size: 4rem;
+      color: #b0bec5;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #37474f;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      max-width: 320px;
+      margin: 0;
+    }
+  }
+
+  .lista-publicaciones {
+    padding-top: 0;
+    padding-bottom: 80px; // Espacio para que el FAB no tape el último elemento
+    background: transparent;
+  }
+
+  .fab-agregar {
+    margin-bottom: 16px;
+    margin-inline-end: 16px;
+
+    ion-fab-button {
+      --background: #3880ff;
+      --box-shadow: 0 4px 12px rgba(56, 128, 255, 0.4);
+
+      ion-icon {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

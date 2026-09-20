@@ -1,0 +1,24 @@
+.cabecera-formulario {
+  border-bottom: 1px solid #e0e0e0;
+
+  .toolbar-formulario {
+    --background: #ffffff;
+    --min-height: 56px;
+
+    .titulo-formulario {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #222222;
+      padding-left: 0;
+    }
+
+    ion-back-button {
+      --color: #333333;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.contenido-formulario {
+  --background: #ffffff;
+}

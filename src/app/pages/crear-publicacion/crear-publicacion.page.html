@@ -1,0 +1,16 @@
+<ion-header class="ion-no-border cabecera-formulario">
+  <ion-toolbar class="toolbar-formulario">
+    <ion-buttons slot="start">
+      <!-- Botón de retorno a la lista de publicaciones con icono de flecha atrás -->
+      <ion-back-button defaultHref="/home" text="" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo-formulario">Publicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contenido-formulario">
+  <!-- Componente modular hijo para el formulario reactivo y validaciones -->
+  <app-publicacion-form
+    (formularioGuardado)="onGuardarPublicacion($event)"
+  ></app-publicacion-form>
+</ion-content>

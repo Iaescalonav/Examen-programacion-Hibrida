@@ -1,0 +1,65 @@
+.modal-contenido {
+  --background: #ffffff;
+}
+
+.contenedor-alerta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 8px;
+
+  .icono-peligro-circulo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #ffebee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    ion-icon {
+      font-size: 2.4rem;
+    }
+  }
+
+  .titulo-confirmacion {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212121;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .texto-mensaje {
+    font-size: 0.95rem;
+    color: #424242;
+    line-height: 1.4;
+    margin-bottom: 8px;
+
+    .texto-resaltado {
+      color: #000000;
+      word-break: break-word;
+    }
+  }
+
+  .texto-advertencia {
+    font-size: 0.8rem;
+    color: #888888;
+    margin-bottom: 24px;
+  }
+
+  .fila-botones {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+
+    .boton-modal {
+      flex: 1;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+}

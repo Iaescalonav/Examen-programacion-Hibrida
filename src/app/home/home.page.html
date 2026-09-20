@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border cabecera-principal">
+  <ion-toolbar class="toolbar-publicaciones">
+    <ion-title class="titulo-centrado">Publicaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contenido-publicaciones">
+  <!-- Refresco deslizante hacia abajo -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline"></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Indicador de carga estructural con *ngIf -->
+  <div class="contenedor-cargando" *ngIf="cargando">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p>Cargando avisos comunitarios...</p>
+  </div>
+
+  <!-- Estado vacío con *ngIf cuando no hay publicaciones registradas -->
+  <div class="contenedor-vacio" *ngIf="!cargando && listaPublicaciones.length === 0">
+    <ion-icon name="newspaper-outline" class="icono-vacio"></ion-icon>
+    <h3>No hay publicaciones registradas</h3>
+    <p>Presiona el botón (+) en la esquina inferior derecha para agregar el primer aviso de la comunidad.</p>
+  </div>
+
+  <!-- Listado de publicaciones mediante ion-list y directiva *ngFor -->
+  <ion-list *ngIf="!cargando && listaPublicaciones.length > 0" class="lista-publicaciones">
+    <!-- Componente modular hijo para cada publicación individual con @Input y @Output -->
+    <app-publicacion-item
+      *ngFor="let publicacionItem of listaPublicaciones"
+      [publicacion]="publicacionItem"
+      (eliminarClick)="abrirModalConfirmacion($event)"
+    ></app-publicacion-item>
+  </ion-list>
+
+  <!-- Botón de acción flotante (FAB) para agregar nueva publicación -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="fab-agregar">
+    <ion-fab-button
+      routerLink="/crear-publicacion"
+      color="primary"
+      aria-label="Crear nueva publicación"
+    >
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
